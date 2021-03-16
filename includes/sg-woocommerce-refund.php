@@ -5,7 +5,7 @@ require_once( dirname( __FILE__ ) . '/sg-woocommerce-helper.php' );
 /**
  *
  */
-class WC_Payment_Refund_SG_SG
+class WC_Payment_Refund_SG
 {
   function refund($order_id, $amount)
   {
