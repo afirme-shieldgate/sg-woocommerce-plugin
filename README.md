@@ -121,7 +121,7 @@ In the item detail we will find the **Refund** button, we click and the refund o
 
 We type the amount to be reimbursed and click the **Refund via Shieldgate** button. The status within WooCommerce will change and so will the status on the gateway.
 
-## 7. Configuración del Webhook
+## 7. Webhook Configuration
 The plugin includes the functionality of a webhook to receive the transaction updates that are made. This webhook receives transaction notifications and updates them in the WooCommerce admin and database.
 
 To configure it, the merchant must provide its **Shieldgate** commercial advisor with the address where the webhook is installed, it will be in the following format: https://{{URL-COMMERCE}}/wp-content/plugins/sg-woocommerce-plugin/includes/sg-woocommerce-webhook.php.
