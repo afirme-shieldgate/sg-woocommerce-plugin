@@ -97,11 +97,11 @@ The options to configure are the following:
 
 - **App Code Client:** Unique identifier in Shieldgate.
 
-- **App Key Client:** Key used to encrypt communication with Shieldgate or GlobalPay.
+- **App Key Client:** Key used to encrypt communication with Shieldgate.
 
-- **App Code Server:** Unique identifier on the Shieldgate or GlobalPay server.
+- **App Code Server:** Unique identifier on the Shieldgate server.
 
-- **App Key Server:** Key used for communication with the GlobalPay server.
+- **App Key Server:** Key used for communication with the Shieldgate server.
 
 ## 5.- Selecting the Plugin in the Store Checkout
 When we have all our plugin activated and configured in WooCommerce, we will see it available to be selected by customers on the Checkout page of our store.
