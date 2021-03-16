@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-03-12 19:17-0600\n"
-"PO-Revision-Date: 2021-03-12 19:49-0600\n"
+"POT-Creation-Date: 2021-03-16 10:06-0600\n"
+"PO-Revision-Date: 2021-03-16 10:09-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_MX\n"
@@ -10,10 +10,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
-"X-Poedit-Basepath: ..\n"
+"X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: includes/admin/sg-woocommerce-settings.php:5
 msgid "Staging Environment"
@@ -47,11 +45,13 @@ msgstr "Mensaje al Cliente"
 
 #: includes/admin/sg-woocommerce-settings.php:26
 msgid "This controls the message which the user sees during checkout page."
-msgstr "Esto controla el mensaje que ve el usuario durante la página de pago."
+msgstr ""
+"Esto controla el mensaje que ve el usuario durante la página de pago."
 
 #: includes/admin/sg-woocommerce-settings.php:27
 msgid " is a complete solution for online payments. Safe, easy and fast."
-msgstr " es una solución completa para pagos en línea. Segura, fácil y rápida."
+msgstr ""
+" es una solución completa para pagos en línea. Segura, fácil y rápida."
 
 #: includes/admin/sg-woocommerce-settings.php:31
 msgid "Checkout Language"
@@ -77,125 +77,44 @@ msgstr "Deshabilitar"
 msgid "Enabled"
 msgstr "Habilitar"
 
-#: includes/admin/sg-woocommerce-settings.php:48
-msgid ""
-"Revolving and deferred without interest (The bank will pay to the commerce "
-"the installment, month by month)(Ecuador)"
-msgstr ""
-"Revolvente y diferido sin intereses (El banco pagará al comercio la cuota, "
-"mes a mes) (Ecuador)"
-
 #: includes/admin/sg-woocommerce-settings.php:49
-msgid "Deferred with interest (Ecuador)"
-msgstr "Diferido con intereses (Ecuador)"
-
-#: includes/admin/sg-woocommerce-settings.php:50
-msgid "Deferred without interest (Ecuador)"
-msgstr "Diferido sin intereses (Ecuador)"
-
-#: includes/admin/sg-woocommerce-settings.php:51
-msgid "Deferred with interest and months of grace (Ecuador)"
-msgstr "Diferido con intereses y meses de gracia (Ecuador)"
-
-#: includes/admin/sg-woocommerce-settings.php:52
-msgid "Deferred without interest pay month by month (Ecuador)(Medianet)"
-msgstr "Deferred without interest pay month by month (Ecuador)(Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:53
-msgid "Deferred without interest and months of grace (Ecuador)"
-msgstr "Diferido sin intereses y meses de gracia (Ecuador)"
-
-#: includes/admin/sg-woocommerce-settings.php:54
-msgid "Deferred without interest promotion bimonthly (Ecuador)(Medianet)"
-msgstr "Promoción bimestral diferida sin intereses (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:55
-#: includes/admin/sg-woocommerce-settings.php:56
-msgid "For Diners Club exclusive, deferred with and without interest (Ecuador)"
-msgstr "Para Diners Club exclusivo, diferido con y sin interés (Ecuador)"
-
-#: includes/admin/sg-woocommerce-settings.php:57
-msgid "Deferred with interest pay month by month (Ecuador)(Medianet)"
-msgstr "Diferido con pago de intereses mes a mes (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:58
-msgid "Deferred without interest promotions (Supermaxi)(Ecuador)(Medianet)"
-msgstr "Promociones diferidas sin intereses (Supermaxi) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:59
-msgid "Deferred with interest (Cuota fácil)(Ecuador)(Medianet)"
-msgstr "Diferido con intereses (Cuota fácil) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:60
-msgid "Without interest (Rendecion Produmillas)(Ecuador)(Medianet)"
-msgstr "Sin interés (Rendecion Produmillas) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:61
-msgid "Without interest sale with promotions (Ecuador)(Medianet)"
-msgstr "Venta sin intereses con promociones (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:62
-msgid "Deferred special without interest (Ecuador)(Medianet)"
-msgstr "Especial diferido sin intereses (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:63
-msgid "Credit without interest (cte smax)(Ecuador)(Medianet)"
-msgstr "Crédito sin intereses (cte smax) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:64
-msgid "Special credit without interest (smax)(Ecuador)(Medianet)"
-msgstr "Crédito especial sin intereses (smax) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:65
-msgid "Prepay without interest (smax)(Ecuador)(Medianet)"
-msgstr "Prepago sin intereses (smax) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:66
-msgid "Defered credit without interest (smax)(Ecuador)(Medianet)"
-msgstr "Crédito diferido sin intereses (dmax) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:67
-msgid "Without interest with months of grace (Supermaxi)(Ecuador)(Medianet)"
-msgstr "Sin intereses con meses de gracia (Supermaxi) (Ecuador) (Medianet)"
-
-#: includes/admin/sg-woocommerce-settings.php:69
 msgid ""
 "Select the installments type that will be enabled on the payment screen "
 "(Only on card payment)."
 msgstr ""
-"Seleccione el tipo de cuotas que se habilitarán en la pantalla de pago (Solo "
-"en pago con tarjeta)."
+"Seleccione el tipo de cuotas que se habilitarán en la pantalla de pago "
+"(Solo en pago con tarjeta)."
 
-#: includes/admin/sg-woocommerce-settings.php:72
+#: includes/admin/sg-woocommerce-settings.php:52
 msgid "App Code Client"
-msgstr ""
+msgstr "App Code Client"
 
-#: includes/admin/sg-woocommerce-settings.php:74
+#: includes/admin/sg-woocommerce-settings.php:54
 msgid "Unique commerce identifier in "
 msgstr "Identificador único de comercio en "
 
-#: includes/admin/sg-woocommerce-settings.php:77
+#: includes/admin/sg-woocommerce-settings.php:57
 msgid "App Key Client"
-msgstr ""
+msgstr "App Key Client"
 
-#: includes/admin/sg-woocommerce-settings.php:79
+#: includes/admin/sg-woocommerce-settings.php:59
 msgid "Key used to encrypt communication with "
 msgstr "Clave utilizada para cifrar la comunicación con "
 
-#: includes/admin/sg-woocommerce-settings.php:82
+#: includes/admin/sg-woocommerce-settings.php:62
 msgid "App Code Server"
-msgstr ""
+msgstr "App Code Server"
 
-#: includes/admin/sg-woocommerce-settings.php:84
+#: includes/admin/sg-woocommerce-settings.php:64
 msgid "Unique commerce identifier to perform admin actions on "
 msgstr ""
 "Identificador de comercio único para realizar acciones administrativas en "
 
-#: includes/admin/sg-woocommerce-settings.php:87
+#: includes/admin/sg-woocommerce-settings.php:67
 msgid "App Key Server"
-msgstr ""
+msgstr "App Key Server"
 
-#: includes/admin/sg-woocommerce-settings.php:89
+#: includes/admin/sg-woocommerce-settings.php:69
 msgid "Key used to encrypt admin communication with "
 msgstr "Clave utilizada para cifrar la comunicación del administrador con "
 
@@ -282,7 +201,7 @@ msgid ""
 "credit card payments. Developed by: "
 msgstr ""
 "Este módulo es una solución que permite a los usuarios de WooCommerce "
-"procesar fácilmente los pagos con tarjeta de crédito. Desarrollada por: "
+"procesar fácilmente los pagos con tarjeta de crédito. Desarrollado por: "
 
 #: sg-woocommerce-plugin.php:96
 msgid "Transaction: "
