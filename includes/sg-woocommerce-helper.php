@@ -108,7 +108,7 @@ class SG_WC_Helper
    */
   public static function generate_ltp($order, $environment) {
     $url_ltp = ($environment == 'yes') ? 'https://noccapi-stg.'.SG_DOMAIN.SG_LTP : 'https://noccapi.'.SG_DOMAIN.SG_LTP ;
-    $auth_token = SG_WC_Helper::generate_auth_token('client');
+    $auth_token = SG_WC_Helper::generate_auth_token('server');
 
     $checkout_data = SG_WC_Helper::get_checkout_params($order);
     $redirect_url = $order->get_view_order_url();
@@ -130,7 +130,7 @@ class SG_WC_Helper
       ],
       'configuration' => [
         'partial_payment' => false,
-        'expiration_time' => 3600,
+        'expiration_days' => 1,
         'success_url' => $redirect_url,
         'failure_url' => $redirect_url,
         'pending_url' => $redirect_url,
