@@ -178,4 +178,16 @@ class SG_WC_Helper
 
      return $auth_token;
    }
+
+    /**
+     *
+     */
+    public static function get_stokens($user_id, $transaction_id)
+    {
+        $webhookObj = new SG_WC_Plugin();
+        $stoken_client = md5($transaction_id . "_" . $webhookObj->app_code_client . "_" . $user_id . "_" . $webhookObj->app_key_client);
+        $stoken_server = md5($transaction_id . "_" . $webhookObj->app_code_server . "_" . $user_id . "_" . $webhookObj->app_key_server);
+        return array($stoken_server, $stoken_client);
+
+    }
 }
