@@ -55,18 +55,18 @@ if (!in_array($statusOrder, ['completed', 'cancelled', 'refunded', 'processing']
       $order->update_status('processing');
       $order->reduce_order_stock();
       $order->add_order_note( __('The payment has been made successfully. Transaction Code: ', 'sg_woocommerce') . $transaction_id . __(' and its Authorization Code is: ', 'sg_woocommerce') . $authorization_code);
-    } elseif (array_in($status_detail, [0, 1, 31, 35, 36])) {
+    } elseif (in_array($status_detail, [0, 1, 31, 35, 36])) {
       $comments = __("Pending Payment", "sg_woocommerce");
       $order->update_status('on-hold');
       $order->add_order_note( __('The payment is pending.', 'sg_woocommerce') . $transaction_id . __(' the reason is: ', 'sg_woocommerce') . $payment_message);
-    } elseif (array_in($status_detail, [7, 34, 21, 22, 23, 24, 25, 26, 27, 28, 29])) {
+    } elseif (in_array($status_detail, [7, 34, 21, 22, 23, 24, 25, 26, 27, 28, 29])) {
       $order->update_status('refunded');
       $order->add_order_note( __('Transaction refunded: ', 'sg_woocommerce') . $transaction_id . __(' status: ', 'sg_woocommerce') . $payment_message);
     } elseif ($status_detail == 8) {
       $description = "Chargeback";
       $comments = __("Payment Cancelled", "sg_woocommerce");
       $order->update_status('cancelled');
-      $order->add_order_note( __('The payment was cancelled. Transaction Code: ', 'sg_woocommerce') . $transaction_id . __(' the reason is chargeback. ', 'sg_woocommerce'));
+      $order->add_order_note( __('The payment was cancelled. Transaction Code: ', 'gp_woocommerce') . $transaction_id . __(' the reason is chargeback. ', 'sg_woocommerce'));
     } else {
       $comments = __("Failed Payment", "sg_woocommerce");
       $order->update_status('failed');
