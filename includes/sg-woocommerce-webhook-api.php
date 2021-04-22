@@ -8,7 +8,7 @@ require_once( dirname( __DIR__ ) . '/sg-woocommerce-plugin.php' );
 class WC_Payment_Webhook_SG
 {
     /**
-     *
+     * Function to update the Woocommerce order with the coming payment gateway data.
      */
     static function update_order($order, $parameters)
     {
@@ -24,15 +24,13 @@ class WC_Payment_Webhook_SG
 
         if (!$payment_stoken) {
             return ['message' => 'time limit error', 'code' => 400];
-        } else {
-            if (!in_array($payment_stoken, SG_WC_Helper::get_stokens($user_id, $transaction_id))) {
+        } elseif (!in_array($payment_stoken, SG_WC_Helper::get_stokens($user_id, $transaction_id))) {
                 return ['message' => 'token error', 'code' => 203];
-            }
         }
 
-        $statusOrder = $order->get_status();
+        $status_order = $order->get_status();
 
-        if (!in_array($statusOrder, ['cancelled', 'refunded'])) {
+        if (!in_array($status_order, ['cancelled', 'refunded'])) {
             $description = __("Payment Response: ", "sg_woocommerce") .
                 __(" | Status: ", "sg_woocommerce") . $status .
                 __(" | Status_detail: ", "sg_woocommerce") . $status_detail .
@@ -66,7 +64,7 @@ class WC_Payment_Webhook_SG
             SG_WC_Helper::insert_data($status, $comments, $description, $dev_reference, $transaction_id);
             return ['message' => 'order updated', 'code' => 200];
         } else {
-            return ['message' => 'order cant change', 'code' => 400];
+            return ['message' => 'order cant change', 'code' => 200];
         }
     }
 }

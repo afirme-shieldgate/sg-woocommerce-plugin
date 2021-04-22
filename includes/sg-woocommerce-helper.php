@@ -3,16 +3,16 @@ require_once( dirname( __DIR__ ) . '/sg-woocommerce-plugin.php' );
 
 global $wpdb;
 
-define("SG_TABLE_NAME", $wpdb->prefix . 'sg_wc_plugin');
+define('SG_TABLE_NAME', $wpdb->prefix . 'sg_wc_plugin');
 
 /**
- *
+ * Helper class to manage actions from the payment gateway and actions on database.
  */
 class SG_WC_Helper
 {
 
   /**
-   *
+   * Creates the required table on Wordpress database.
    */
   public static function create_table() {
     global $wpdb;
@@ -32,7 +32,7 @@ class SG_WC_Helper
   }
 
   /**
-   *
+   * Inserts data to the plugin table.
    */
   public static function insert_data($status, $comments, $description, $dev_reference, $transaction_id) {
     global $wpdb;
@@ -56,7 +56,9 @@ class SG_WC_Helper
   }
 
   /**
-   *
+   * Gets a payment gateway transaction code for a Woocommerce order id.
+   * @param string $order_id
+   * @return string
    */
   public static function select_order($order_id) {
     global $wpdb;
@@ -69,12 +71,14 @@ class SG_WC_Helper
   }
 
   /**
-   *
+   * Method that build the required params to initialize the payment checkout.
+   * @param WC_Order $order
+   * @return array
    */
   public static function get_checkout_params($order) {
     $order_data = $order->get_data();
 
-    $description = "";
+    $description = '';
     foreach ($order->get_items() as $product) {
       $description .= $product['name'] . ',';
     }
@@ -83,7 +87,7 @@ class SG_WC_Helper
     }
 
     if (is_null($order_data['customer_id']) or empty($order_data['customer_id'])) {
-        $uid = $orderId;
+        $uid = $order->id;
     } else {
         $uid = $order_data['customer_id'];
     }
@@ -104,7 +108,10 @@ class SG_WC_Helper
   }
 
   /**
-   *
+   * Method to manage the LinkToPay request.
+   * @param WC_Order $order
+   * @param string $environment
+   * @return string URL to LinkToPay
    */
   public static function generate_ltp($order, $environment) {
     $url_ltp = ($environment == 'yes') ? 'https://noccapi-stg.'.SG_DOMAIN.SG_LTP : 'https://noccapi.'.SG_DOMAIN.SG_LTP ;
@@ -158,7 +165,9 @@ class SG_WC_Helper
   }
 
   /**
-   *
+   * Method to generate the payment gateway token for authentication.
+   * @param string $type server
+   * @return string|void
    */
    public static function generate_auth_token($type) {
      $plugin = new SG_WC_Plugin();
@@ -168,19 +177,22 @@ class SG_WC_Helper
      } elseif ($type == 'client') {
        $app_code = $plugin->app_code_client;
        $app_key = $plugin->app_key_client;
+     } else {
+         return;
      }
 
-     $fecha_actual = time();
-     $variableTimestamp = (string)($fecha_actual);
-     $uniq_token_string = $app_key . $variableTimestamp;
-     $uniq_token_hash = hash('sha256', $uniq_token_string);
-     $auth_token = base64_encode($app_code . ';' . $variableTimestamp . ';' . $uniq_token_hash);
+     $timestamp = (string)(time());
+     $token_string = $app_key . $timestamp;
+     $token_hash = hash('sha256', $token_string);
 
-     return $auth_token;
+     return base64_encode($app_code . ';' . $timestamp . ';' . $token_hash);
    }
 
     /**
-     *
+     * Method to calculate the payment gateway stokens used for authentication.
+     * @param string $user_id
+     * @param string $transaction_id
+     * @return array containing the stokens for client and server credentials.
      */
     public static function get_stokens($user_id, $transaction_id)
     {

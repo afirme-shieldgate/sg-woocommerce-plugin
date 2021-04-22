@@ -27,7 +27,7 @@ const SG_LTP    = "/linktopay/init_order/";
 
 add_action( 'plugins_loaded', 'sg_woocommerce_plugin' );
 
-function payment_webhook( WP_REST_Request $request ) {
+function shieldgate_payment_webhook( WP_REST_Request $request ) {
     $parameters = $request->get_params();
     try {
         $order = new WC_Order($parameters['transaction']['dev_reference']);
@@ -41,7 +41,7 @@ function payment_webhook( WP_REST_Request $request ) {
 add_action( 'rest_api_init', function () {
     register_rest_route( 'shieldgate/webhook/v1', 'params', array(
         'methods' => WP_REST_SERVER::CREATABLE,
-        'callback' => 'payment_webhook',
+        'callback' => 'shieldgate_payment_webhook',
         'args' => array(),
         'permission_callback' => function () {
             return true;
@@ -111,17 +111,17 @@ if (!function_exists('sg_woocommerce_plugin')) {
         }
       }
 
-			public function process_refund( $order_id, $amount = null,  $reason = '' ) {
-				$refund = new WC_Payment_Refund_SG();
-				$refund_data = $refund->refund($order_id, $amount);
-				if ($refund_data['success']) {
-					$order = new WC_Order($order_id);
-					$order->add_order_note( __('Transaction: ', 'sg_woocommerce') . $refund_data['transaction_id'] . __(' refund status: ', 'sg_woocommerce') . $refund_data['status'] . __(' reason: ', 'sg_woocommerce') . $reason);
-					return $refund_data['success'];
-				} else {
-					return $refund_data['success'];
-				}
-			}
+      public function process_refund( $order_id, $amount = null,  $reason = '' ) {
+          $refund = new WC_Payment_Refund_SG();
+          $refund_data = $refund->refund($order_id, $amount);
+          if ($refund_data['success']) {
+              $order = new WC_Order($order_id);
+              $order->add_order_note( __('Transaction: ', 'sg_woocommerce') . $refund_data['transaction_id'] . __(' refund status: ', 'sg_woocommerce') . $refund_data['status'] . __(' reason: ', 'sg_woocommerce') . $reason);
+              return $refund_data['success'];
+          } else {
+              return $refund_data['success'];
+          }
+      }
 
       public function generate_ltp_form($order) {
         $url = SG_WC_Helper::generate_ltp($order, $this->environment);
@@ -176,11 +176,11 @@ if (!function_exists('sg_woocommerce_plugin')) {
       }
 
       /**
-  		 * Process the payment and return the result
-  		 *
-  		 * @param int $orderId
-  		 * @return array
-  		 */
+       * Process the payment and return the result
+       *
+       * @param int $orderId
+       * @return array
+       */
       public function process_payment($orderId) {
           $order = new WC_Order($orderId);
 					WC()->cart->empty_cart();
