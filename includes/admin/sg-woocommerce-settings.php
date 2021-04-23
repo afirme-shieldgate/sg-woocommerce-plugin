@@ -45,6 +45,9 @@ return array (
       'options' => array(
         -1 => __('Disabled', 'sg_woocommerce'),
         0  => __('Enabled', 'sg_woocommerce'),
+        2  => __('Deferred with interest', 'sg_woocommerce'),
+        3  => __('Deferred without interest', 'sg_woocommerce'),
+        9  => __('Deferred without interest and months of grace', 'sg_woocommerce'),
       ),
       'description' => __('Select the installments type that will be enabled on the payment screen (Only on card payment).', 'sg_woocommerce')
     ),
