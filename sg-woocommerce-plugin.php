@@ -4,7 +4,7 @@
 Plugin Name: ShieldGate WooCommerce Plugin
 Plugin URI: http://www.shieldgate.mx
 Description: This module is a solution that allows WooCommerce users to easily process credit card payments.
-Version: 2.0
+Version: 2.0.1
 Author: ShieldGate
 Author URI: https://developers.shieldgate.mx/docs/payments/
 Text Domain: sg_woocommerce
