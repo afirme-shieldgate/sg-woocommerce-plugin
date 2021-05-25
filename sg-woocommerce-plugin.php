@@ -75,12 +75,13 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 $this->checkout_language    = $this->get_option('checkout_language');
                 $this->environment          = $this->get_option('staging');
                 $this->enable_ltp           = $this->get_option('enable_ltp');
+                $this->enable_card          = $this->get_option('enable_card');
                 $this->enable_installments  = $this->get_option('enable_installments');
 
                 $this->app_code_client      = $this->get_option('app_code_client');
                 $this->app_key_client       = $this->get_option('app_key_client');
                 $this->app_code_server      = $this->get_option('app_code_server');
-                $this->app_key_server       =  $this->get_option('app_key_server');
+                $this->app_key_server       = $this->get_option('app_key_server');
 
                 $this->css                  = plugins_url('/assets/css/styles.css', __FILE__);
 
@@ -108,9 +109,30 @@ if (!function_exists('sg_woocommerce_plugin')) {
 
             function receipt_page($orderId) {
                 $order = new WC_Order($orderId);
-                echo $this->generate_cc_form($order);
+                if ($this->enable_card == 'no' and $this->enable_ltp == 'no') {
+                    ?>
+                    <link rel="stylesheet" type="text/css" href="<?php echo $this->css; ?>">
+                    <div>
+                        <p class="alert alert-warning">
+                            <?php _e( 'There are no payment methods selected by the merchant', 'sg_woocommerce' ) ?>
+                        </p>
+                    </div>
+                    <div id="button-return">
+                        <p>
+                            <a class="return-button" href="<?php echo get_permalink( wc_get_page_id( 'checkout' ) ); ?>">
+                                <?php _e( 'Return to checkout', 'sg_woocommerce' ) ?>
+                            </a>
+                        </p>
+                    </div>
+                    <?php
+                }
+                if ($this->enable_card == 'yes') {
+                    WC()->cart->empty_cart();
+                    $this->generate_cc_form($order);
+                }
                 if ($this->enable_ltp == 'yes') {
-                    echo $this->generate_ltp_form($order);
+                    WC()->cart->empty_cart();
+                    $this->generate_ltp_form($order);
                 }
             }
 
@@ -157,7 +179,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
 
                 <div id="button-return" class="hide">
                     <p>
-                        <a class="purchase-button" href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?php _e( 'Return to Store', 'sg_woocommerce' ) ?></a>
+                        <a class="return-button" href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?php _e( 'Return to Store', 'sg_woocommerce' ) ?></a>
                     </p>
                 </div>
 
@@ -191,7 +213,6 @@ if (!function_exists('sg_woocommerce_plugin')) {
              */
             public function process_payment($orderId) {
                 $order = new WC_Order($orderId);
-                WC()->cart->empty_cart();
                 return array(
                     'result' => 'success',
                     'redirect' => $order->get_checkout_payment_url(true)

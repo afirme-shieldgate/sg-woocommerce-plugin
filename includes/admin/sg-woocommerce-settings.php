@@ -7,6 +7,12 @@ return array (
         'label' => __( 'Use staging environment in ', 'sg_woocommerce' ).SG_FLAVOR.'.',
         'default' => 'yes'
     ),
+    'enable_card' => array(
+        'title' => __( 'Enable Card Payment', 'sg_woocommerce' ),
+        'type' => 'checkbox',
+        'label' => __( 'If selected, card payment can be used to pay.', 'sg_woocommerce' ),
+        'default' => 'no'
+    ),
     'enable_ltp' => array(
         'title' => __( 'Enable LinkToPay', 'sg_woocommerce' ),
         'type' => 'checkbox',
