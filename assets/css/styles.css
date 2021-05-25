@@ -43,28 +43,34 @@
 }
 
 .alert {
-  padding: 15px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-clip: padding-box;
-  border-radius: 0;
-  border: 5px solid;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.4);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.4);
-  color: #FFF;
-  font-weight: 300;
+  padding: 20px;
+  color: white;
+  display: flex;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
 
 .alert-success {
   background: #0fbd71;
   border-color: #0fbd71;
-  color: #666666 !important;
 }
 
 .alert-warning {
-  background: #F5A9A9;
+  background: #FA5858;
   border-color: #FA5858;
-  color: #666666 !important;
 }
 
 .hide {
@@ -72,7 +78,7 @@
 }
 
 .purchase-button {
-  background-color: #0fbd71;
+  background-color: #97D700;
   text-decoration: none;
   color: #fff;
   display: inline-block;
@@ -81,4 +87,60 @@
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 14px;
+}
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #97D700 none;
+  text-transform: uppercase;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height:53px;
+  line-height: 3;
+  background: #97D700;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  border: 1px solid #9c9c9c;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #97D700;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #4000D7;
 }

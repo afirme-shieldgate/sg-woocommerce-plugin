@@ -28,47 +28,40 @@ return array (
         ')
     ),
     'checkout_language' => array(
-      'title' => __('Checkout Language', 'sg_woocommerce'),
-      'type' => 'select',
-      'default' => 'en',
-      'options' => array(
-        'en' => 'EN',
-        'es' => 'ES',
-        'pt' => 'PT',
-      ),
-      'description' => __('User\'s preferred language for checkout window. English will be used by default.', 'sg_woocommerce')
+        'title' => __('Checkout Language', 'sg_woocommerce'),
+        'type' => 'select',
+        'default' => 'en',
+        'options' => array(
+            'en' => 'EN',
+            'es' => 'ES',
+            'pt' => 'PT',
+        ),
+        'description' => __('User\'s preferred language for checkout window. English will be used by default.', 'sg_woocommerce')
     ),
-    'installments_type' => array(
-      'title' => __('Installments Type', 'sg_woocommerce'),
-      'type' => 'select',
-      'default' => -1,
-      'options' => array(
-        -1 => __('Disabled', 'sg_woocommerce'),
-        0  => __('Enabled', 'sg_woocommerce'),
-        2  => __('Deferred with interest', 'sg_woocommerce'),
-        3  => __('Deferred without interest', 'sg_woocommerce'),
-        9  => __('Deferred without interest and months of grace', 'sg_woocommerce'),
-      ),
-      'description' => __('Select the installments type that will be enabled on the payment screen (Only on card payment).', 'sg_woocommerce')
+    'enable_installments' => array(
+        'title' => __('Enable Installments', 'sg_woocommerce'),
+        'type' => 'checkbox',
+        'default' => 'no',
+        'label' => __('If selected, the installments options will be showed on the payment screen (Only on card payment).', 'sg_woocommerce')
     ),
     'app_code_client' => array(
-      'title' => __('App Code Client', 'sg_woocommerce'),
-      'type' => 'text',
-      'description' => __('Unique commerce identifier in ', 'sg_woocommerce').SG_FLAVOR.'.'
+        'title' => __('App Code Client', 'sg_woocommerce'),
+        'type' => 'text',
+        'description' => __('Unique commerce identifier in ', 'sg_woocommerce').SG_FLAVOR.'.'
     ),
     'app_key_client' => array(
-      'title' => __('App Key Client', 'sg_woocommerce'),
-      'type' => 'text',
-      'description' => __('Key used to encrypt communication with ', 'sg_woocommerce').SG_FLAVOR.'.'
+        'title' => __('App Key Client', 'sg_woocommerce'),
+        'type' => 'text',
+        'description' => __('Key used to encrypt communication with ', 'sg_woocommerce').SG_FLAVOR.'.'
     ),
     'app_code_server' => array(
-      'title' => __('App Code Server', 'sg_woocommerce'),
-      'type' => 'text',
-      'description' => __('Unique commerce identifier to perform admin actions on ', 'sg_woocommerce').SG_FLAVOR.'.'
+        'title' => __('App Code Server', 'sg_woocommerce'),
+        'type' => 'text',
+        'description' => __('Unique commerce identifier to perform admin actions on ', 'sg_woocommerce').SG_FLAVOR.'.'
     ),
     'app_key_server' => array(
-      'title' => __('App Key Server', 'sg_woocommerce'),
-      'type' => 'text',
-      'description' => __('Key used to encrypt admin communication with ', 'sg_woocommerce').SG_FLAVOR.'.'
+        'title' => __('App Key Server', 'sg_woocommerce'),
+        'type' => 'text',
+        'description' => __('Key used to encrypt admin communication with ', 'sg_woocommerce').SG_FLAVOR.'.'
     )
-  );
+);
