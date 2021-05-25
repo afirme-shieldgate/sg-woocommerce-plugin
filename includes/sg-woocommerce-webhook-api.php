@@ -41,7 +41,6 @@ class WC_Payment_Webhook_SG
             if ($status_detail == 3) {
                 $comments = __("Successful Payment", "sg_woocommerce");
                 $order->update_status('processing');
-                wc_reduce_stock_levels($order->get_id());
                 $order->add_order_note(__('The payment has been made successfully. Transaction Code: ', 'sg_woocommerce') . $transaction_id . __(' and its Authorization Code is: ', 'sg_woocommerce') . $authorization_code);
             } elseif (in_array($status_detail, [0, 1, 31, 35, 36])) {
                 $comments = __("Pending Payment", "sg_woocommerce");
