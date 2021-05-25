@@ -132,6 +132,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 }
                 if ($this->enable_ltp == 'yes') {
                     WC()->cart->empty_cart();
+                    $order->update_status( 'on-hold', SG_FLAVOR . __( ' payment pending.', 'sg_woocommerce' ) );
                     $this->generate_ltp_form($order);
                 }
             }
@@ -150,7 +151,6 @@ if (!function_exists('sg_woocommerce_plugin')) {
 
             public function generate_ltp_form($order) {
                 $url = SG_WC_Helper::generate_ltp($order, $this->environment);
-                $order->update_status( 'on-hold', __( 'Payment status will be updated via webhook.', 'sg_woocommerce' ) );
                 ?>
                 <link rel="stylesheet" type="text/css" href="<?php echo $this->css; ?>">
                 <div id="payment-buttons">
