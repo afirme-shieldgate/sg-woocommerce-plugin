@@ -85,6 +85,9 @@ jQuery(document).ready(function($) {
         if (document.getElementById("msj-failed")) {
             $("#msj-failed").addClass("hide");
         }
+        if (document.getElementById("installments_div")) {
+            $("#installments_div").addClass("hide");
+        }
     }
 
     function showMessageError() {

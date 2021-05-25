@@ -132,7 +132,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 }
                 if ($this->enable_ltp == 'yes') {
                     WC()->cart->empty_cart();
-                    $order->update_status( 'on-hold', SG_FLAVOR . __( ' payment pending.', 'sg_woocommerce' ) );
+                    $order->update_status( 'pending', SG_FLAVOR . __( ' payment pending.', 'sg_woocommerce' ) );
                     $this->generate_ltp_form($order);
                 }
             }
@@ -170,7 +170,6 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 $webhook_p = plugins_url('/includes/sg-woocommerce-webhook-checkout.php', __FILE__);
                 $checkout = plugins_url('/assets/js/payment_checkout.js', __FILE__);
                 $order_data = SG_WC_Helper::get_checkout_params($order);
-                SG_WC_Helper::get_installments_type($this->enable_installments);
                 ?>
                 <link rel="stylesheet" type="text/css" href="<?php echo $this->css; ?>">
 
@@ -183,6 +182,9 @@ if (!function_exists('sg_woocommerce_plugin')) {
                     </p>
                 </div>
 
+                <?php
+                SG_WC_Helper::get_installments_type($this->enable_installments);
+                ?>
                 <div id="payment-buttons">
                     <script src="https://cdn.shieldgate.mx/ccapi/sdk/payment_checkout_stable.min.js"></script>
                 </div>
