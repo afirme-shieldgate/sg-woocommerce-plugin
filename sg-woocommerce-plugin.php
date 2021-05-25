@@ -132,7 +132,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 }
                 if ($this->enable_ltp == 'yes') {
                     WC()->cart->empty_cart();
-                    $order->update_status( 'pending', SG_FLAVOR . __( ' payment pending.', 'sg_woocommerce' ) );
+                    $order->update_status( 'on-hold', SG_FLAVOR . __( ' payment pending.', 'sg_woocommerce' ) );
                     $this->generate_ltp_form($order);
                 }
             }
@@ -143,10 +143,8 @@ if (!function_exists('sg_woocommerce_plugin')) {
                 if ($refund_data['success']) {
                     $order = new WC_Order($order_id);
                     $order->add_order_note( __('Transaction: ', 'sg_woocommerce') . $refund_data['transaction_id'] . __(' refund status: ', 'sg_woocommerce') . $refund_data['status'] . __(' reason: ', 'sg_woocommerce') . $reason);
-                    return $refund_data['success'];
-                } else {
-                    return $refund_data['success'];
                 }
+                return $refund_data['success'];
             }
 
             public function generate_ltp_form($order) {

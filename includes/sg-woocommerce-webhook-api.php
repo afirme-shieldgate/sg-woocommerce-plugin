@@ -41,7 +41,7 @@ class WC_Payment_Webhook_SG
             if ($status_detail == 3) {
                 $comments = __("Successful Payment", "sg_woocommerce");
                 $order->update_status('processing');
-                $order->reduce_order_stock();
+                wc_reduce_stock_levels($order->get_id());
                 $order->add_order_note(__('The payment has been made successfully. Transaction Code: ', 'sg_woocommerce') . $transaction_id . __(' and its Authorization Code is: ', 'sg_woocommerce') . $authorization_code);
             } elseif (in_array($status_detail, [0, 1, 31, 35, 36])) {
                 $comments = __("Pending Payment", "sg_woocommerce");
@@ -50,6 +50,13 @@ class WC_Payment_Webhook_SG
             } elseif (in_array($status_detail, [7, 34, 21, 22, 23, 24, 25, 26, 27, 28, 29])) {
                 $order->update_status('refunded');
                 $order->add_order_note(__('Transaction refunded: ', 'sg_woocommerce') . $transaction_id . __(' status: ', 'sg_woocommerce') . $payment_message);
+                //Restock
+                foreach ($order->get_items() as $item_id => $item) {
+                    $product = $item->get_product();
+                    $qty = $item->get_quantity();
+                    wc_update_product_stock($product, $qty, 'increase');
+                    $order->add_order_note( __('Restock Product: ', 'sg_woocommerce') . $product->get_name());
+                }
             } elseif ($status_detail == 8) {
                 $description = "Chargeback";
                 $comments = __("Payment Cancelled", "sg_woocommerce");
