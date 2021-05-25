@@ -116,7 +116,6 @@ class SG_WC_Helper
     public static function generate_ltp($order, $environment) {
         $url_ltp = ($environment == 'yes') ? 'https://noccapi-stg.'.SG_DOMAIN.SG_LTP : 'https://noccapi.'.SG_DOMAIN.SG_LTP ;
         $auth_token = SG_WC_Helper::generate_auth_token('server');
-
         $checkout_data = SG_WC_Helper::get_checkout_params($order);
         $redirect_url = $order->get_view_order_url();
 
@@ -156,19 +155,26 @@ class SG_WC_Helper
         try {
             $response = curl_exec($ch);
         } catch (Exception $e) {
+            curl_close($ch);
             return NULL;
         }
         $get_response = json_decode($response, true);
-        curl_close($ch);
-        $data = $get_response['data'];
-        if (array_key_exists('payment', $data)){
+
+        $data = $get_response['data'] ?: [];
+        if (array_key_exists('payment', $data)) {
+            curl_close($ch);
             return $data['payment']['payment_url'];
         } else {
-            $response = json_encode($get_response);
+            if (curl_errno($ch)) {
+                $response = curl_error($ch);
+            } else {
+                $response = json_encode($get_response);
+            }
+            curl_close($ch);
             ?>
             <div id="ltp-failed">
                 <p class="alert alert-warning">
-                    <?php _e('An error occurred generating the payment link', 'sg_woocomemrce')?>: <?php echo $response;?>
+                    <?php _e('An error occurred generating the payment link, gateway response', 'sg_woocommerce')?>: <?php echo $response;?>
                 </p>
             </div>
             <?php

@@ -27,6 +27,20 @@ return array (
         'default' => SG_FLAVOR.__(' is a complete solution for online payments. Safe, easy and fast.', 'sg_woocommerce
         ')
     ),
+    'card_button_text' => array(
+        'title' => __( 'Card Button Text', 'sg_woocommerce' ),
+        'type' => 'text',
+        'description' => __( 'This controls the title which the user sees during payment page.', 'sg_woocommerce' ),
+        'default' => __('Pay With Card', 'sg_woocommerce'),
+        'desc_tip' => true,
+    ),
+    'ltp_button_text' => array(
+        'title' => __( 'Card Button Text', 'sg_woocommerce' ),
+        'type' => 'text',
+        'description' => __( 'This controls the title which the user sees during payment page.', 'sg_woocommerce' ),
+        'default' =>  __( 'Pay with Cash/Bank Transfer', 'sg_woocommerce' ),
+        'desc_tip' => true,
+    ),
     'checkout_language' => array(
         'title' => __('Checkout Language', 'sg_woocommerce'),
         'type' => 'select',

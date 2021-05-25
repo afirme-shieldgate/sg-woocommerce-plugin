@@ -69,6 +69,8 @@ if (!function_exists('sg_woocommerce_plugin')) {
 
                 $this->title                = $this->get_option('title');
                 $this->description          = $this->get_option('description');
+                $this->card_button_text     = $this->get_option('card_button_text');
+                $this->ltp_button_text      = $this->get_option('ltp_button_text');
 
                 $this->checkout_language    = $this->get_option('checkout_language');
                 $this->environment          = $this->get_option('staging');
@@ -126,12 +128,12 @@ if (!function_exists('sg_woocommerce_plugin')) {
 
             public function generate_ltp_form($order) {
                 $url = SG_WC_Helper::generate_ltp($order, $this->environment);
-                $order->update_status( 'pending', __( 'Payment status will be updated via webhook.', 'sg_woocommerce' ) );
+                $order->update_status( 'on-hold', __( 'Payment status will be updated via webhook.', 'sg_woocommerce' ) );
                 ?>
                 <link rel="stylesheet" type="text/css" href="<?php echo $this->css; ?>">
                 <div id="payment-buttons">
                     <button id="ltp-button" class="<?php if($url == NULL){echo "hide";} else {echo "ltp-button";} ?>" onclick="ltpRedirect()">
-                        <?php _e('Pay with Cash/Bank Transfer', 'sg_woocommerce'); ?>
+                        <?php echo $this->ltp_button_text; ?>
                     </button>
                 </div>
                 <script>
@@ -163,7 +165,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
                     <script src="https://cdn.shieldgate.mx/ccapi/sdk/payment_checkout_stable.min.js"></script>
                 </div>
 
-                <button id="checkout-button" class="js-payment-checkout"><?php _e('Pay With Card', 'sg_woocommerce'); ?></button>
+                <button id="checkout-button" class="js-payment-checkout"><?php echo $this->card_button_text; ?></button>
 
                 <div id="order_data" class="hide">
                     <?php echo json_encode($order_data); ?>
