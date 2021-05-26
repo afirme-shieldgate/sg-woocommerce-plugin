@@ -221,7 +221,7 @@ class SG_WC_Helper
     }
 
     /**
-     * Method to calculate the payment gateway stokens used for authentication.
+     * Method to show the installments on the payment page.
      * @param string $enable_installments
      * @return void
      */
