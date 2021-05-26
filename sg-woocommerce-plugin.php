@@ -1,11 +1,11 @@
 <?php
 
 /*
-Plugin Name: ShieldGate WooCommerce Plugin
+Plugin Name: Shieldgate WooCommerce Plugin
 Plugin URI: http://www.shieldgate.mx
-Description: This module is a solution that allows WooCommerce users to easily process credit card payments.
+Description: This module is a solution that allows Woocommerce users to easily process credit card payments.
 Version: 2.1.0
-Author: ShieldGate
+Author: Shielgate
 Author URI: https://developers.shieldgate.mx/docs/payments/
 Text Domain: sg_woocommerce
 Domain Path: /languages
