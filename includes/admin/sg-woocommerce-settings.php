@@ -36,14 +36,14 @@ return array (
     'card_button_text' => array(
         'title' => __( 'Card Button Text', 'sg_woocommerce' ),
         'type' => 'text',
-        'description' => __( 'This controls the title which the user sees during payment page.', 'sg_woocommerce' ),
+        'description' => __( 'This controls the text that the user sees in the card payment button.', 'sg_woocommerce' ),
         'default' => __('Pay With Card', 'sg_woocommerce'),
         'desc_tip' => true,
     ),
     'ltp_button_text' => array(
-        'title' => __( 'Card Button Text', 'sg_woocommerce' ),
+        'title' => __( 'LinkToPay Button Text', 'sg_woocommerce' ),
         'type' => 'text',
-        'description' => __( 'This controls the title which the user sees during payment page.', 'sg_woocommerce' ),
+        'description' => __( 'his controls the text that the user sees in the LinkToPay button.', 'sg_woocommerce' ),
         'default' =>  __( 'Pay with Cash/Bank Transfer', 'sg_woocommerce' ),
         'desc_tip' => true,
     ),
