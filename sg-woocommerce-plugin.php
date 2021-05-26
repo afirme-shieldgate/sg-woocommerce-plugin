@@ -193,7 +193,7 @@ if (!function_exists('sg_woocommerce_plugin')) {
                     <?php echo json_encode($order_data); ?>
                 </div>
 
-                <script id="woocommerce_checkout_pg"
+                <script id="woocommerce_checkout_sg"
                         webhook_p="<?php echo $webhook_p; ?>"
                         app_key="<?php echo $this->app_key_client; ?>"
                         app_code="<?php echo $this->app_code_client; ?>"
