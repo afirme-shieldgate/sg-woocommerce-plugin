@@ -9,8 +9,8 @@ jQuery(document).ready(function($) {
     var environment = (staging === "yes") ? "stg" : "prod";
     var enable_installments = checkout_values.getAttribute('enable_installments');
 
-    if (enable_installments === "yes"){
-        $("#installments_div").removeClass("hide")
+    if (enable_installments === "no"){
+        $("#installments_div").addClass("hide")
     }
 
     var paymentCheckout = new PaymentCheckout.modal({
