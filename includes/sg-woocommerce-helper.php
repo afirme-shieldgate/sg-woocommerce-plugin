@@ -118,6 +118,7 @@ class SG_WC_Helper
         $auth_token = SG_WC_Helper::generate_auth_token('server');
         $checkout_data = SG_WC_Helper::get_checkout_params($order);
         $redirect_url = $order->get_view_order_url();
+        $plugin = new SG_WC_Plugin();
 
         $data = [
             'user' => [
@@ -136,7 +137,7 @@ class SG_WC_Helper
             ],
             'configuration' => [
                 'partial_payment' => false,
-                'expiration_days' => 1,
+                'expiration_days' => $plugin->ltp_expiration,
                 'success_url' => $redirect_url,
                 'failure_url' => $redirect_url,
                 'pending_url' => $redirect_url,
@@ -221,7 +222,7 @@ class SG_WC_Helper
     }
 
     /**
-     * Method to calculate the payment gateway stokens used for authentication.
+     * Method to show the installments on the payment page.
      * @param string $enable_installments
      * @return void
      */
@@ -236,7 +237,7 @@ class SG_WC_Helper
         <div class="select" id="installments_div">
             <select name="installments_type" id="installments_type">
                 <option selected disabled><?php _e('Installments Type', 'sg_woocommerce'); ?>:</option>
-                <option value=-1><?php _e('Whitout Installments', 'sg_woocommerce'); ?></option>
+                <option value=-1><?php _e('Without Installments', 'sg_woocommerce'); ?></option>
                 <?php
                 if ($enable_installments == 'yes')
                 {
