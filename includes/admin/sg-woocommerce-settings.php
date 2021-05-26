@@ -43,7 +43,7 @@ return array (
     'ltp_button_text' => array(
         'title' => __( 'LinkToPay Button Text', 'sg_woocommerce' ),
         'type' => 'text',
-        'description' => __( 'his controls the text that the user sees in the LinkToPay button.', 'sg_woocommerce' ),
+        'description' => __( 'This controls the text that the user sees in the LinkToPay button.', 'sg_woocommerce' ),
         'default' =>  __( 'Pay with Cash/Bank Transfer', 'sg_woocommerce' ),
         'desc_tip' => true,
     ),
